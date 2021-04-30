@@ -1,0 +1,300 @@
+{
+	"version": "2",
+	"templates": [
+        {
+			"type": 1,
+			"title": "Influxdb 2.x only for x86",
+			"description": "Time series database.",
+			"categories": [
+				"Database"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "influxdb:latest",
+			"env": [{
+					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
+					"set": "admin"
+				},
+				{
+					"name": "DOCKER_INFLUXDB_INIT_PASSWORD",
+					"set": "admin"
+				},
+				{
+					"name": "DOCKER_INFLUXDB_INIT_ORG",
+					"set": "costume"
+				},
+                {
+					"name": "DOCKER_INFLUXDB_INIT_BUCKET",
+					"set": "my-bucket"
+				}
+			],
+			"ports": [
+				"8086"
+			],
+			"volumes": [{
+					"container": "/root/influxdb/data"
+				},
+				{
+					"container": "/root/influxdb2/data"
+				}
+			]
+		},
+		{
+			"type": 1,
+			"title": "Influxdb 1.x for ARM and x86",
+			"description": "Time series database.",
+			"categories": [
+				"Database"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "influxdb:1.8.5-alpine",
+			"env": [{
+					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
+					"set": "admin"
+				},
+				{
+					"name": "DOCKER_INFLUXDB_INIT_PASSWORD",
+					"set": "admin"
+				},
+				{
+					"name": "DOCKER_INFLUXDB_INIT_ORG",
+					"set": "costume"
+				},
+                {
+					"name": "DOCKER_INFLUXDB_INIT_BUCKET",
+					"set": "my-bucket"
+				}
+			],
+			"ports": [
+				"8086"
+			],
+			"volumes": [{
+					"container": "/root/influxdb/data"
+				},
+				{
+					"container": "/root/influxdb2/data"
+				}
+			]
+		},
+        {
+			"type": 1,
+			"title": "Chronograph",
+			"description": "",
+			"categories": [
+				"Visu"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "chronograf:latest",
+			"ports": [
+				"8888"
+			],
+			"volumes": [{
+					"container": "var/lib/chronograf"
+				}
+			]
+		},
+        {
+			"type": 1,
+			"title": "Grafana",
+			"description": "",
+			"categories": [
+				"Visu"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "grafana/grafana:latest",
+			"env": [{
+					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
+					"set": "admin"
+				}
+			],
+			"ports": [
+				"3000"
+			],
+			"volumes": [{
+					"container": "/var/lib/grafana grafana/grafana"
+				}
+			]
+		},
+        {
+			"type": 1,
+			"title": "Pi-Hole",
+			"description": "",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "pihole/pihole",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				},
+				{
+					"name": "WEBPASSWORD",
+					"set": "admin"
+				}
+			],
+			"ports": [
+                "53:53/tcp",
+                "53:53/udp",
+                "67:67/udp",
+                "80/tcp"
+			],
+			"volumes": [{
+					"container": "/etc/pihole/"
+				},
+				{
+					"container": "/etc/dnsmasq.d/"
+				}
+            ],    
+            "capabilities":[
+                "NET_ADMIN"
+            ]
+		},
+        {
+			"type": 1,
+			"title": "Node-Red",
+			"description": "",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "nodered/node-red",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				}
+			],
+			"ports": [
+                "1880"
+			],
+			"volumes": [{
+					"container": "/data"
+				}
+            ],    
+            "capabilities":[
+                "NET_ADMIN"
+            ]
+		},
+		{
+			"type": 1,
+			"title": "iobroker",
+			"description": "",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "buanet/iobroker:latest",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				}
+			],
+			"ports": [
+				"8081"
+			],
+			"volumes": [{
+					"container": "/opt/iobroker"
+				}
+			]
+		},
+		{
+			"type": 1,
+			"title": "Home Assitant",
+			"description": "",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "homeassistant/home-assistant:stable",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				}
+			],
+			"ports": [
+				"8123"
+			],
+			"volumes": [{
+					"container": "/etc/localtime:/etc/localtime:ro"
+				},
+				{
+					"container": "/config"
+				}
+			],	
+			"network": "host"
+		},
+		{
+			"type": 1,
+			"title": "Adguard",
+			"description": "Free and open source, powerful network-wide ads & trackers blocking DNS server.",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "adguard/adguardhome:latest",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				}
+			],
+			"ports": [
+                "53:53/tcp",
+                "53:53/udp",
+                "67:67/udp",
+				"68:68/udp",
+				"68:68/tcp",
+                "80/tcp",
+				"443/tcp",
+				"853/tcp",
+				"784/udp",
+				"3000/tcp",
+				"5443/tcp"
+			],
+			"volumes": [{
+					"container": "/opt/adguardhome/work"
+				},
+				{
+					"container": "/opt/adguardhome/conf"
+				}
+			]
+		},
+		{
+			"type": 1,
+			"title": "Eclipse Mosquitto",
+			"description": "Eclipse Mosquitto is an open source message broker which implements MQTT version 5, 3.1.1 and 3.1",
+			"categories": [
+				"Addons"
+			],
+			"platform": "linux",
+			"logo": "",
+			"image": "eclipse-mosquitto:latest",
+			"env": [{
+					"name": "TZ",
+					"set": "Europe/Berlin"
+				}
+			],
+			"ports": [
+                "1883",
+                "9001"
+			],
+			"volumes": [{
+					"container": "/mosquitto/config/"
+				},
+				{
+					"container": "/mosquitto/data/"
+				},
+				{
+					"container": "/mosquitto/log/"
+				}
+			]
+		}
+	]
+}

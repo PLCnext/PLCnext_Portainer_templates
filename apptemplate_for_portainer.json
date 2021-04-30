@@ -29,7 +29,7 @@
 				}
 			],
 			"ports": [
-				"8086"
+				"8086:8086"
 			],
 			"volumes": [{
 					"container": "/root/influxdb/data"
@@ -67,7 +67,7 @@
 				}
 			],
 			"ports": [
-				"8086"
+				"8086:8086"
 			],
 			"volumes": [{
 					"container": "/root/influxdb/data"
@@ -80,7 +80,7 @@
         {
 			"type": 1,
 			"title": "Chronograph",
-			"description": "",
+			"description": "Chronograf is a visualization tool for time series data in InfluxDB.",
 			"categories": [
 				"Visu"
 			],
@@ -88,40 +88,35 @@
 			"logo": "",
 			"image": "chronograf:latest",
 			"ports": [
-				"8888"
+				"8888:8888"
 			],
 			"volumes": [{
-					"container": "var/lib/chronograf"
+					"container": "/var/lib/chronograf"
 				}
 			]
 		},
         {
 			"type": 1,
 			"title": "Grafana",
-			"description": "",
+			"description": "The open-source platform for monitoring and observability.",
 			"categories": [
 				"Visu"
 			],
 			"platform": "linux",
 			"logo": "",
 			"image": "grafana/grafana:latest",
-			"env": [{
-					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
-					"set": "admin"
-				}
-			],
 			"ports": [
-				"3000"
+				"3000:3000"
 			],
 			"volumes": [{
-					"container": "/var/lib/grafana grafana/grafana"
+					"container": "/var/lib/grafana"
 				}
 			]
 		},
         {
 			"type": 1,
 			"title": "Pi-Hole",
-			"description": "",
+			"description": "Network-wide ad blocking via your own Linux hardware",
 			"categories": [
 				"Addons"
 			],
@@ -141,7 +136,7 @@
                 "53:53/tcp",
                 "53:53/udp",
                 "67:67/udp",
-                "80/tcp"
+                "8080:80/tcp"
 			],
 			"volumes": [{
 					"container": "/etc/pihole/"
@@ -157,7 +152,7 @@
         {
 			"type": 1,
 			"title": "Node-Red",
-			"description": "",
+			"description": "Low-code programming for event-driven applications.",
 			"categories": [
 				"Addons"
 			],
@@ -170,7 +165,7 @@
 				}
 			],
 			"ports": [
-                "1880"
+                "1880:1880"
 			],
 			"volumes": [{
 					"container": "/data"
@@ -183,7 +178,7 @@
 		{
 			"type": 1,
 			"title": "iobroker",
-			"description": "",
+			"description": "ioBroker is an integration platform for the Internet of Things, focused on Building Automation, Smart Metering, Ambient Assisted Living, Process Automation, Visualization and Data Logging.",
 			"categories": [
 				"Addons"
 			],
@@ -196,7 +191,7 @@
 				}
 			],
 			"ports": [
-				"8081"
+				"8081:8081"
 			],
 			"volumes": [{
 					"container": "/opt/iobroker"
@@ -206,7 +201,7 @@
 		{
 			"type": 1,
 			"title": "Home Assitant",
-			"description": "",
+			"description": "Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts.",
 			"categories": [
 				"Addons"
 			],
@@ -219,10 +214,12 @@
 				}
 			],
 			"ports": [
-				"8123"
+				"8123:8123"
 			],
 			"volumes": [{
-					"container": "/etc/localtime:/etc/localtime:ro"
+					"container": "/etc/localtime",
+					"bind": ":/etc/localtime",
+					"readonly": true
 				},
 				{
 					"container": "/config"
@@ -246,17 +243,17 @@
 				}
 			],
 			"ports": [
+				"80/tcp",
+				"443/tcp",
                 "53:53/tcp",
                 "53:53/udp",
                 "67:67/udp",
 				"68:68/udp",
 				"68:68/tcp",
-                "80/tcp",
-				"443/tcp",
-				"853/tcp",
-				"784/udp",
-				"3000/tcp",
-				"5443/tcp"
+				"853:853/tcp",
+				"784:784/udp",
+				"3000:3000/tcp",
+				"5443:5443/tcp"
 			],
 			"volumes": [{
 					"container": "/opt/adguardhome/work"
@@ -282,8 +279,8 @@
 				}
 			],
 			"ports": [
-                "1883",
-                "9001"
+                "1883:1883",
+                "9001:9001"
 			],
 			"volumes": [{
 					"container": "/mosquitto/config/"

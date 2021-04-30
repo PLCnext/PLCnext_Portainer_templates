@@ -220,12 +220,6 @@
 			"platform": "linux",
 			"logo": "",
 			"image": "homeassistant/home-assistant:stable",
-			"env": [{
-					"name": "TZ",
-					"label": "Timezone",
-					"default": "Europe/Berlin"
-				}
-			],
 			"ports": [
 				"8123:8123"
 			],
@@ -250,12 +244,6 @@
 			"platform": "linux",
 			"logo": "",
 			"image": "adguard/adguardhome:latest",
-			"env": [{
-					"name": "TZ",
-					"label": "Timezone",
-					"default": "Europe/Berlin"
-				}
-			],
 			"ports": [
 				"80/tcp",
 				"443/tcp",
@@ -287,12 +275,6 @@
 			"platform": "linux",
 			"logo": "",
 			"image": "eclipse-mosquitto:latest",
-			"env": [{
-					"name": "TZ",
-					"label": "Timezone",
-					"default": "Europe/Berlin"
-				}
-			],
 			"ports": [
                 "1883:1883",
                 "9001:9001"

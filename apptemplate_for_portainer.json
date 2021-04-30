@@ -13,19 +13,23 @@
 			"image": "influxdb:latest",
 			"env": [{
 					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
-					"set": "admin"
+					"label": "Username",
+					"default": "admin"
 				},
 				{
 					"name": "DOCKER_INFLUXDB_INIT_PASSWORD",
-					"set": "admin"
+					"label": "Password",
+					"default": "admin"
 				},
 				{
 					"name": "DOCKER_INFLUXDB_INIT_ORG",
-					"set": "costume"
+					"label": "Organisation",
+					"default": "costume"
 				},
                 {
 					"name": "DOCKER_INFLUXDB_INIT_BUCKET",
-					"set": "my-bucket"
+					"label": "Database name",
+					"default": "my-bucket"
 				}
 			],
 			"ports": [
@@ -50,21 +54,25 @@
 			"logo": "",
 			"image": "influxdb:1.8.5-alpine",
 			"env": [{
-					"name": "DOCKER_INFLUXDB_INIT_USERNAME",
-					"set": "admin"
-				},
-				{
-					"name": "DOCKER_INFLUXDB_INIT_PASSWORD",
-					"set": "admin"
-				},
-				{
-					"name": "DOCKER_INFLUXDB_INIT_ORG",
-					"set": "costume"
-				},
-                {
-					"name": "DOCKER_INFLUXDB_INIT_BUCKET",
-					"set": "my-bucket"
-				}
+				"name": "DOCKER_INFLUXDB_INIT_USERNAME",
+				"label": "Username",
+				"default": "admin"
+			},
+			{
+				"name": "DOCKER_INFLUXDB_INIT_PASSWORD",
+				"label": "Password",
+				"default": "admin"
+			},
+			{
+				"name": "DOCKER_INFLUXDB_INIT_ORG",
+				"label": "Organisation",
+				"default": "costume"
+			},
+			{
+				"name": "DOCKER_INFLUXDB_INIT_BUCKET",
+				"label": "Database name",
+				"default": "my-bucket"
+			}
 			],
 			"ports": [
 				"8086:8086"
@@ -125,11 +133,13 @@
 			"image": "pihole/pihole",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				},
 				{
 					"name": "WEBPASSWORD",
-					"set": "admin"
+					"label": "Password for Webinterface",
+					"default": "admin"
 				}
 			],
 			"ports": [
@@ -161,7 +171,8 @@
 			"image": "nodered/node-red",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				}
 			],
 			"ports": [
@@ -187,7 +198,8 @@
 			"image": "buanet/iobroker:latest",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				}
 			],
 			"ports": [
@@ -210,7 +222,8 @@
 			"image": "homeassistant/home-assistant:stable",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				}
 			],
 			"ports": [
@@ -218,7 +231,7 @@
 			],
 			"volumes": [{
 					"container": "/etc/localtime",
-					"bind": ":/etc/localtime",
+					"bind": "/etc/localtime",
 					"readonly": true
 				},
 				{
@@ -239,7 +252,8 @@
 			"image": "adguard/adguardhome:latest",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				}
 			],
 			"ports": [
@@ -275,7 +289,8 @@
 			"image": "eclipse-mosquitto:latest",
 			"env": [{
 					"name": "TZ",
-					"set": "Europe/Berlin"
+					"label": "Timezone",
+					"default": "Europe/Berlin"
 				}
 			],
 			"ports": [

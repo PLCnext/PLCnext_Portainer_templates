@@ -52,7 +52,7 @@
 			],
 			"platform": "linux",
 			"logo": "",
-			"image": "influxdb:1.8.5-alpine",
+			"image": "influxdb:1.8.5",
 			"env": [{
 				"name": "DOCKER_INFLUXDB_INIT_USERNAME",
 				"label": "Username",

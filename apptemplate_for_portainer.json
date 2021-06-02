@@ -36,10 +36,7 @@
 				"8086:8086"
 			],
 			"volumes": [{
-					"container": "/root/influxdb/data"
-				},
-				{
-					"container": "/root/influxdb2/data"
+					"container": "/var/lib/influxdb/"
 				}
 			]
 		},
@@ -78,10 +75,7 @@
 				"8086:8086"
 			],
 			"volumes": [{
-					"container": "/root/influxdb/data"
-				},
-				{
-					"container": "/root/influxdb2/data"
+					"container": "var/lib/influxdb/"
 				}
 			]
 		},

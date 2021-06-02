@@ -33,10 +33,10 @@
 				}
 			],
 			"ports": [
-				"8086:8086"
+				"8086:8086/tcp"
 			],
 			"volumes": [{
-					"container": "/var/lib/influxdb/"
+					"container": "/var/lib/influxdb"
 				}
 			]
 		},
@@ -72,10 +72,10 @@
 			}
 			],
 			"ports": [
-				"8086:8086"
+				"8086:8086/tcp"
 			],
 			"volumes": [{
-					"container": "var/lib/influxdb/"
+					"container": "/var/lib/influxdb"
 				}
 			]
 		},
@@ -90,7 +90,7 @@
 			"logo": "",
 			"image": "chronograf:latest",
 			"ports": [
-				"8888:8888"
+				"8888:8888/tcp"
 			],
 			"volumes": [{
 					"container": "/var/lib/chronograf"
@@ -108,7 +108,7 @@
 			"logo": "",
 			"image": "grafana/grafana:latest",
 			"ports": [
-				"3000:3000"
+				"3000:3000/tcp"
 			],
 			"volumes": [{
 					"container": "/var/lib/grafana"
@@ -170,7 +170,7 @@
 				}
 			],
 			"ports": [
-                "1880:1880"
+                "1880:1880/tcp"
 			],
 			"volumes": [{
 					"container": "/data"
@@ -197,7 +197,7 @@
 				}
 			],
 			"ports": [
-				"8081:8081"
+				"8081:8081/tcp"
 			],
 			"volumes": [{
 					"container": "/opt/iobroker"
@@ -270,8 +270,8 @@
 			"logo": "",
 			"image": "eclipse-mosquitto:latest",
 			"ports": [
-                "1883:1883",
-                "9001:9001"
+                "1883:1883/tcp",
+                "9001:9001/tcp"
 			],
 			"volumes": [{
 					"container": "/mosquitto/config/"
